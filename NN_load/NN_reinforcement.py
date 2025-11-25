@@ -53,8 +53,7 @@ trajectory = []
 trajectory = []   # list of dicts is more flexible than list of lists
 
 for t in range(steps):
-    dIPFs = mppi.action(state)
-    IPFs = IPFs + dIPFs
+    IPFs = mppi.action(state)
 
     IPFs_t = torch.tensor(IPFs[None,:], dtype=torch.float32, device=device)
     psi = net_PINN(IPFs_t, IpBeta_t).detach().squeeze().numpy()

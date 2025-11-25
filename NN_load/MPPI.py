@@ -138,8 +138,8 @@ class MPPIController:
         dU = np.tensordot(weights, eps, axes=(0, 0))
 
         self.U_mean = self.U_mean + dU
- 
+        action = self.U_mean[0].copy()
         self.U_mean[:-1] = self.U_mean[1:]
         self.U_mean[-1] = self.U_mean[-2]  # or zeros
 
-        return dU[0]
+        return action
